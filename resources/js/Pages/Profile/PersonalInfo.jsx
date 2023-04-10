@@ -1,10 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {Head, Link, useForm, usePage} from '@inertiajs/react';
-import InputLabel from "@/components/InputLabel";
-import TextInput from "@/components/TextInput";
-import InputError from "@/components/InputError";
-import Checkbox from "@/components/Checkbox";
-import PrimaryButton from "@/components/PrimaryButton";
+import InputLabel from "@/Components/InputLabel";
+import TextInput from "@/Components/TextInput";
+import InputError from "@/Components/InputError";
+import Checkbox from "@/Components/Checkbox";
+import PrimaryButton from "@/Components/PrimaryButton";
 import {useEffect} from "react";
 
 export default function PersonalInfo({ auth }) {
