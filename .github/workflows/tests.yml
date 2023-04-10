@@ -40,6 +40,19 @@ jobs:
       - name: Copy environment file
         run: cp .env.example .env
 
+      - name: Install MySQL
+        services:
+          mysql:
+            image: mysql
+            env:
+              MYSQL_ROOT_PASSWORD: 1
+              MYSQL_DATABASE: mirea_articles
+            ports:
+              - 3306:3306
+
+      - name: Run artisan migrate
+        run: php artisan migrate
+
       - name: Generate app key
         run: php artisan key:generate
 
