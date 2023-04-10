@@ -54,5 +54,8 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Install node dependencies
+        run: npm install
+
       - name: Execute tests
         run: vendor/bin/phpunit
