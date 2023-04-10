@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -29,7 +30,7 @@ class User extends Authenticatable
         'group',
         'role',
         'phone',
-        'password_hash',
+        'password',
     ];
 
     /**
@@ -38,12 +39,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password_hash',
+        'password',
         'remember_token',
     ];
 
     public function setPasswordAttribute($password)
     {
-        $this->attributes['password_hash'] = Hash::make($password);
+        $this->attributes['password'] = Hash::make($password);
     }
 }

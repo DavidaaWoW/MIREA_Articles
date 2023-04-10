@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     @viteReactRefresh
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.jsx'])
 </head>
 <body>
     <div id="app">
@@ -46,7 +46,7 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('registration') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
