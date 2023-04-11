@@ -15,11 +15,10 @@ return new class extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
             $table->uuid()->primary();
-            $table->char('user_uuid', 36);
             $table->text('message');
             $table->timestamps();
 
-            $table->foreign('user_uuid')->references('uuid')->on('users');
+            $table->foreignUuid('user_id')->constrained();
         });
     }
 

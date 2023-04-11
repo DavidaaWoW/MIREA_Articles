@@ -15,6 +15,14 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: 1
+          MYSQL_DATABASE: mirea_articles
+        ports:
+          - 3306:3306
 
     strategy:
       fail-fast: true
@@ -40,8 +48,17 @@ jobs:
       - name: Copy environment file
         run: cp .env.example .env
 
+      - name: Run artisan migrate
+        run: php artisan migrate
+
       - name: Generate app key
         run: php artisan key:generate
+
+      - name: Install node dependencies
+        run: npm install
+
+      - name: Build manifest
+        run: npm run build
 
       - name: Execute tests
         run: vendor/bin/phpunit

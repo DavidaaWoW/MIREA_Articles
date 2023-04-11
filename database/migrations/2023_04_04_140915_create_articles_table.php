@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
-            $table->uuid()->primary();
-            $table->char('user_uuid', 36);
+            $table->uuid('id')->primary();
             $table->string('title');
             $table->string('file_dir');
             $table->string('indexability')->nullable();
@@ -25,7 +24,7 @@ return new class extends Migration
             $table->string('verification_status');
             $table->timestamps();
 
-            $table->foreign('user_uuid')->references('uuid')->on('users');
+            $table->foreignUuid('user_id')->constrained();
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('code')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('group')->nullable();
             $table->string('role')->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->string('password_hash');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
