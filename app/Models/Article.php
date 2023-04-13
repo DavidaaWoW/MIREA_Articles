@@ -18,7 +18,7 @@ class Article extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_uuid',
+        'user_id',
         'title',
         'file_dir',
         'indexability',

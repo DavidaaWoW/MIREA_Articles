@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->text('message');
             $table->timestamps();
 

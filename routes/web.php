@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +31,32 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'profile_info'])->name('dashboard');
 
+Route::get('/search',  function () {
+    return Inertia::render('Search');
+})->name('searchArticles');
+
+Route::get('/single_article/{id}', [ArticleController::class, 'getSingleArticle'])->name('singleArticle');
+Route::get('/another_profile/{id}', [ProfileController::class, 'getAnotherProfileInfo'])->name('anotherProfile');
+Route::get('/articles/{udc}', [ArticleController::class, 'getArticlesByUDC'])->name('getArticlesByUDC');
+
+
+Route::post('/search',  [ArticleController::class, 'searchArticle'])->name('searchArticles');
 
 Route::middleware(['auth', 'profile_info'])->group(function (){
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/add_article', function () {
+        return Inertia::render('AddArticle');
+    })->name('addArticle');
+    Route::get('/add_feedback', function () {
+        return Inertia::render('AddFeedback');
+    })->name('addFeedback');
+    Route::get('/profile/my_articles', [ArticleController::class, 'getArticleByProfileId'])->name('myArticles');
+    Route::get('/download/{id}', [ArticleController::class, 'downloadFile'])->name('download');
+
+    Route::post('/add_article', [ArticleController::class, 'addSingleArticle'])->name('addArticle');
+    Route::post('/add_feedback', [FeedbackController::class, 'addFeedback'])->name('addFeedback');
 });
 
 Route::middleware('auth')->group(function () {
