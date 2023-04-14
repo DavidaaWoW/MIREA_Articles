@@ -17,6 +17,7 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <a href={{route('download')}} ></a>
         </div>
     </div>
 </div>

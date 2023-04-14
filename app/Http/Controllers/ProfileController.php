@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Article;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -71,5 +73,17 @@ class ProfileController extends Controller
         $request->user()->fill($validated);
         $request->user()->save();
         return Redirect::route('dashboard');
+    }
+
+    public function getAnotherProfileInfo($id)
+    {
+        if(!$id){
+            return abort(500);
+        }
+
+        $articles = Article::where('user_id', '=', $id)->orderBy('updated_at')->get();
+        $user_info = User::find($id);
+        return Inertia::render('Profile/AnotherProfile', ["articles" => $articles, "another_user" => $user_info]);
+
     }
 }
