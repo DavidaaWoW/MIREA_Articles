@@ -58,7 +58,10 @@ export default function Search({auth, articles = [], info = ''}) {
                             articles.map((article) => {
                                 console.log(article)
                                 return (
+                                    <div>
                                     <a href={route('singleArticle', article.id)}>{article.title}</a>
+                                    <br />
+                                    </div>
                                 );
                             })
                         }

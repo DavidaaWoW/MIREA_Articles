@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth, can }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -20,7 +20,10 @@ export default function Dashboard({ auth }) {
                         <a href={route('searchArticles')} className="btn btn-primary">Поиск статей</a>
                         <br/>
                         <a href={route('addFeedback')} className="btn btn-primary">Заполнить форму обратной связи</a>
-
+                        <br/>
+                        {
+                            can ? (<a href={route('adminPanel')}>Панель администратора</a>) : null
+                        }
                     </div>
                 </div>
             </div>
