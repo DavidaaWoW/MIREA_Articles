@@ -70,8 +70,9 @@ class ProfileController extends Controller
             'group' => 'required',
             'phone' => 'required',
         ]);
-        $request->user()->fill($validated);
-        $request->user()->save();
+
+        Auth::user()->fill($validated);
+        Auth::user()->save();
         return Redirect::route('dashboard');
     }
 
@@ -81,7 +82,7 @@ class ProfileController extends Controller
             return abort(500);
         }
 
-        $articles = Article::where('user_id', '=', $id)->orderBy('updated_at')->get();
+        $articles = Article::where([['user_id', '=', $id], ['verification_status', '=', 'accepted']])->orderBy('updated_at')->get();
         $user_info = User::find($id);
         return Inertia::render('Profile/AnotherProfile', ["articles" => $articles, "another_user" => $user_info]);
 

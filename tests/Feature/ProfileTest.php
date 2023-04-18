@@ -21,6 +21,37 @@ class ProfileTest extends TestCase
         $response->assertOk();
     }
 
+    public function test_profile_information_can_be_filled(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->post('/personal_information', [
+                'name' => 'Фамилия Имя',
+                'code' => '20И2837',
+                'course' => '3',
+                'institute' => 'ИТ',
+                'faculty' => 'ИППО',
+                'group' => 'ИКБО-10-20',
+                'phone' => '80000000000',
+            ]);
+
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertRedirect('/dashboard');
+
+        $user->refresh();
+
+        $this->assertSame('Фамилия Имя', $user->name);
+        $this->assertSame('20И2837', $user->code);
+        $this->assertSame(3, $user->course);
+        $this->assertSame('ИТ', $user->institute);
+        $this->assertSame('ИППО', $user->faculty);
+        $this->assertSame('ИКБО-10-20', $user->group);
+        $this->assertSame('80000000000', $user->phone);
+    }
+
     public function test_profile_information_can_be_updated(): void
     {
         $user = User::factory()->create();
@@ -76,5 +107,17 @@ class ProfileTest extends TestCase
             ->assertRedirect('/profile');
 
         $this->assertNotNull($user->fresh());
+    }
+
+    public function test_can_view_another_profile(): void
+    {
+        $user = User::factory()->create();
+        $user2 = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->get('/another_profile/'.$user2->id);
+
+        $response->assertOk();
     }
 }
