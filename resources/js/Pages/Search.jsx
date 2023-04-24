@@ -6,7 +6,7 @@ import InputError from "@/Components/InputError";
 import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
 import {useEffect} from "react";
-
+import '../../sass/stylesProfile.scss'
 export default function Search({auth, articles = [], info = ''}) {
     const user = usePage().props.auth.user;
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -28,7 +28,7 @@ export default function Search({auth, articles = [], info = ''}) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="Form bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <form onSubmit={submit}>
                             <div>
                                 <InputLabel htmlFor="search" value="Поиск"/>
@@ -38,7 +38,7 @@ export default function Search({auth, articles = [], info = ''}) {
                                     type="text"
                                     name="search"
                                     value={data.search}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     isFocused={true}
                                     onChange={(e) => setData('search', e.target.value)}
                                 />
@@ -59,7 +59,7 @@ export default function Search({auth, articles = [], info = ''}) {
                                 console.log(article)
                                 return (
                                     <div>
-                                    <a href={route('singleArticle', article.id)}>{article.title}</a>
+                                    <a href={route('singleArticle', article.id)}>{article.title} </a>
                                     <br />
                                     </div>
                                 );

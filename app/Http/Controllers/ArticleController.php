@@ -31,10 +31,13 @@ class ArticleController extends Controller
 //            'article' => ['required', 'mimes:docx']
 //        ]);
 
-
+        //dd($request->file());
         $article = new Article($article_data);
         $article->id = uniqid();
-        $article->file_dir = $request->file('article')[0]->store('/public/' . date("Y") . '/' . date("m"));
+
+        $article->file_dir = $request->file('article')[0]->
+        store('/public/' . date("Y") . '/' . date("m"));
+
         $article->verification_status = "on review";
         $article->user_id = Auth::user()->id;
         $article->save();
@@ -163,6 +166,6 @@ class ArticleController extends Controller
             }
             $new_article->save();
         }
-        return redirect(route('adminPanel'));
+
     }
 }

@@ -7,9 +7,10 @@ import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
+import SecondaryButton from "@/Components/SecondaryButton";
 import {useEffect} from "react";
 import DangerButton from "@/Components/DangerButton";
-
+import '../../sass/stylesArticlesOnReview.scss'
 export default function MyArticles({auth, articles}) {
     const user = usePage().props.auth.user;
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -32,15 +33,23 @@ export default function MyArticles({auth, articles}) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="articlesOnReviewList  overflow-hidden shadow-sm sm:rounded-lg">
                         {
                             articles.map((article) => {
                                 return (
-                                    <div>
-                                        <span>{article.title}</span>
-                                        <a href={route('download', article.id)}>Скачать файл</a>
+                                    <div className={"acceptPanel bg-blue-300"}>
+                                        <div className={"spanPanel"}>
+                                            <span className={"spanName"}>Title: {article.title}</span>
+                                            <br/>
+                                            <span className={"spanName"}>Indexability: {article.indexability}</span>
+                                            <br/>
+                                            <span className={"spanName"}>UDC: {article.udc}</span>
+                                            <br/>
+                                        </div>
+
+
                                         <br/>
-                                        <form onSubmit={submit}>
+                                        <form className={"dpsBtn"} onSubmit={submit}>
 
                                             <DangerButton onClick={
                                                 (e) => {setData({result: 'declined', id: article.id})}
@@ -48,6 +57,9 @@ export default function MyArticles({auth, articles}) {
                                             <PrimaryButton onClick={
                                                 (e) => {setData({result: 'accepted', id: article.id})}
                                             }>Принять</PrimaryButton>
+                                            <SecondaryButton>
+                                                <a href={route('download', article.id)}>Скачать файл</a>
+                                            </SecondaryButton>
                                         </form>
                                     </div>
                                 );

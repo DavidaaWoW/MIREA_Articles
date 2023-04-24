@@ -6,6 +6,8 @@ import InputError from "@/Components/InputError";
 import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
 import {useEffect} from "react";
+import '../../sass/stylesAddArticle.scss';
+
 
 export default function AddArticle({ auth }) {
     const user = usePage().props.auth.user;
@@ -29,11 +31,11 @@ export default function AddArticle({ auth }) {
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Добавить статью</h2>}
         >
-            <Head title="Add article" />
+            <Head title="Добавить статью" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="formArticle bg-blue-300 overflow-hidden shadow-sm sm:rounded-lg">
                         <form onSubmit={submit} encType="multipart/form-data">
                             <div>
                                 <InputLabel htmlFor="title" value="Название" />
@@ -43,7 +45,7 @@ export default function AddArticle({ auth }) {
                                     type="text"
                                     name="title"
                                     value={data.title}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     placeholder="Введите полное название статьи"
                                     isFocused={true}
                                     onChange={(e) => setData('title', e.target.value)}
@@ -60,7 +62,7 @@ export default function AddArticle({ auth }) {
                                     type="text"
                                     name="indexability"
                                     value={data.indexability}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     placeholder="Введите индексируемость статьи"
                                     onChange={(e) => setData('indexability', e.target.value)}
                                 />
@@ -76,7 +78,7 @@ export default function AddArticle({ auth }) {
                                     type="text"
                                     name="udc"
                                     value={data.udc}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     placeholder="Введите УДК статьи"
                                     onChange={(e) => setData('udc', e.target.value)}
                                 />
@@ -92,7 +94,7 @@ export default function AddArticle({ auth }) {
                                     type="text"
                                     name="scientific_adviser"
                                     value={data.scientific_adviser}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     placeholder="Введите ФИО научного руководителя (при наличии)"
                                     onChange={(e) => setData('scientific_adviser', e.target.value)}
                                 />
@@ -108,12 +110,28 @@ export default function AddArticle({ auth }) {
                                     type="text"
                                     name="publication_place"
                                     value={data.publication_place}
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     placeholder="Введите место публикации (сборник статей, научный журнал и т.д.)"
                                     onChange={(e) => setData('publication_place', e.target.value)}
                                 />
 
                                 <InputError message={errors.publication_place} className="mt-2" />
+                            </div>
+
+                            <InputLabel htmlFor="article" value="Загрузите файл статьи в формате .docx" />
+                            <div className="input__wrapper">
+                                <input name="file" type="file" id="input__file" className="input input__file" multiple/>
+                                    <label htmlFor="input__file" className="input__file-button" >
+                                        <span className="input__file-icon-wrapper">
+                                            <img
+                                            className="input__file-icon"
+                                            src="https://cdn.icon-icons.com/icons2/1812/PNG/512/4213410-arrow-down-download-move-save_115410.png"
+
+                                            width="25"/>
+
+                                        </span>
+                                        <span className="input__file-button-text">Выберите файл</span>
+                                    </label>
                             </div>
 
                             <div className="mt-4">
@@ -123,12 +141,12 @@ export default function AddArticle({ auth }) {
                                     id="article"
                                     type="file"
                                     name="article"
-                                    className="mt-1 block w-full"
+                                    className="formTextInp mt-1 block w-full"
                                     onChange={(e) => setData('article', e.target.files)}
                                 />
 
 
-                                <InputError message={errors.article} className="mt-2" />
+                                <InputError message={errors.article} className="formTextInp mt-2" />
                             </div>
 
 
