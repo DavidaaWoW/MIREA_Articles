@@ -9,7 +9,7 @@ import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
 import {useEffect} from "react";
 import DangerButton from "@/Components/DangerButton";
-
+import '../../sass/stylesFeedback.scss'
 export default function FeedbackList({auth, feedback}) {
     const user = usePage().props.auth.user;
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -35,9 +35,14 @@ export default function FeedbackList({auth, feedback}) {
                             feedback.map((feedback_) => {
                                 return (
                                     <div>
-                                        <span>{feedback_.message}</span>
-                                        <br/>
-                                        <span>{feedback_.name}</span>
+                                        <div className="feedBlock">
+                                            <span className={"FeedbackName bg-blue-300"}>{feedback_.name}</span>
+                                            <br/>
+                                            <span className={"FeedbackMsg "}>{feedback_.message}</span>
+
+                                        </div>
+
+
 
                                     </div>
                                 );

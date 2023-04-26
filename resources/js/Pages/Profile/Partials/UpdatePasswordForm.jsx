@@ -5,7 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
-
+import '../../../../sass/stylesProfile.scss';
 export default function UpdatePasswordForm({ className = '' }) {
     const passwordInput = useRef();
     const currentPasswordInput = useRef();
@@ -37,7 +37,7 @@ export default function UpdatePasswordForm({ className = '' }) {
     };
 
     return (
-        <section className={className}>
+        <section className={"className Form"}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Update Password</h2>
 
@@ -46,7 +46,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </p>
             </header>
 
-            <form onSubmit={updatePassword} className="mt-6 space-y-6">
+            <form onSubmit={updatePassword} className=" mt-6 space-y-6">
                 <div>
                     <InputLabel htmlFor="current_password" value="Current Password" />
 
@@ -56,7 +56,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                         value={data.current_password}
                         onChange={(e) => setData('current_password', e.target.value)}
                         type="password"
-                        className="mt-1 block w-full"
+                        className="formTextInp mt-1 block w-full"
                         autoComplete="current-password"
                     />
 
@@ -72,7 +72,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                         value={data.password}
                         onChange={(e) => setData('password', e.target.value)}
                         type="password"
-                        className="mt-1 block w-full"
+                        className="formTextInp mt-1 block w-full"
                         autoComplete="new-password"
                     />
 
@@ -87,7 +87,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                         value={data.password_confirmation}
                         onChange={(e) => setData('password_confirmation', e.target.value)}
                         type="password"
-                        className="mt-1 block w-full"
+                        className="formTextInp mt-1 block w-full"
                         autoComplete="new-password"
                     />
 

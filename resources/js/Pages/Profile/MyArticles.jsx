@@ -8,7 +8,7 @@ import InputError from "@/Components/InputError";
 import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
 import {useEffect} from "react";
-
+import '../../../sass/stylesMyArticles.scss'
 export default function MyArticles({ auth, articles }) {
     const user = usePage().props.auth.user;
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -36,14 +36,26 @@ export default function MyArticles({ auth, articles }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="cards overflow-hidden shadow-sm sm:rounded-lg">
                         {
                             articles.map((article) => {
                               return (
-                                  <div>
-                                    <span>{article.title}</span>
-                                    <span>{article.verification_status}</span>
-                                      <a href={route('download', article.id)}>Скачать файл</a>
+                                  <div className={"articleList"}>
+
+                                          <div className="card">
+                                              <h1>Название: {article.title}</h1>
+                                              <p>УДК: {article.udc}</p>
+                                              <p>Индексируемость: {article.indexability}</p>
+                                              <p>Место публицации:{article.publication_place}</p>
+                                              <p>Статус верификации: {article.verification_status}</p>
+                                              <p>
+                                                  <button><a href={route('download', article.id)}>Скачать файл</a></button>
+                                              </p>
+                                          </div>
+
+
+
+
                                   </div>
                               );
                             })
