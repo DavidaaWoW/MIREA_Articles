@@ -9,8 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
+/**
+ * Класс, отвечающий за взаимодействие с обратной связью
+ */
 class FeedbackController extends Controller
 {
+
+    /**
+     * Отвечает за добавление обратной связи
+     * @param Request $request
+     * @return void
+     */
     public function addFeedback(Request $request)
     {
         $feedback_data = $request->validate([
@@ -23,8 +32,13 @@ class FeedbackController extends Controller
         $feedback->user_id = Auth::user()->id;
 //        dd($feedback);
         $feedback->save();
+        return redirect(route('dashboard'));
     }
 
+    /**
+     * Отвечает за получение обратной связи
+     * @return \Inertia\Response
+     */
     public function getFeedback()
     {
         $user = Auth::user();

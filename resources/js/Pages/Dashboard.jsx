@@ -9,10 +9,10 @@ export default function Dashboard({ auth, can }) {
         >
             <Head title="Главная" />
 
-            {alert ("You're logged in!")}
-
+            {/*{alert ("You're logged in!")}*/}
 
                             <div className="MenuBtn">
+                                <h1>Вы на главной странице!</h1>
                                 <a href={route('addArticle')} className="btnMenu btn btn-primary">Добавить статью</a>
 
                                 <a href={route('myArticles')} className="btnMenu btn btn-primary">Список моих статей (находится в профиле)</a>

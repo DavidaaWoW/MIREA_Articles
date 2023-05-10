@@ -118,21 +118,21 @@ export default function AddArticle({ auth }) {
                                 <InputError message={errors.publication_place} className="mt-2" />
                             </div>
 
-                            <InputLabel htmlFor="article" value="Загрузите файл статьи в формате .docx" />
-                            <div className="input__wrapper">
-                                <input name="file" type="file" id="input__file" className="input input__file" multiple/>
-                                    <label htmlFor="input__file" className="input__file-button" >
-                                        <span className="input__file-icon-wrapper">
-                                            <img
-                                            className="input__file-icon"
-                                            src="https://cdn.icon-icons.com/icons2/1812/PNG/512/4213410-arrow-down-download-move-save_115410.png"
+                            {/*<InputLabel htmlFor="article" value="Загрузите файл статьи в формате .docx" />*/}
+                            {/*<div className="input__wrapper">*/}
+                            {/*    <input name="file" type="file" id="input__file" className="input input__file" multiple/>*/}
+                            {/*        <label htmlFor="input__file" className="input__file-button" >*/}
+                            {/*            <span className="input__file-icon-wrapper">*/}
+                            {/*                <img*/}
+                            {/*                className="input__file-icon"*/}
+                            {/*                src="https://cdn.icon-icons.com/icons2/1812/PNG/512/4213410-arrow-down-download-move-save_115410.png"*/}
 
-                                            width="25"/>
+                            {/*                width="25"/>*/}
 
-                                        </span>
-                                        <span className="input__file-button-text">Выберите файл</span>
-                                    </label>
-                            </div>
+                            {/*            </span>*/}
+                            {/*            <span className="input__file-button-text">Выберите файл</span>*/}
+                            {/*        </label>*/}
+                            {/*</div>*/}
 
                             <div className="mt-4">
                                 <InputLabel htmlFor="article" value="Загрузите файл статьи в формате .docx" />
