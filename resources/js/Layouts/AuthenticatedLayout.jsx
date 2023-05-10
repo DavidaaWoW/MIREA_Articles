@@ -24,6 +24,14 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Главная
                                 </NavLink>
+                                <NavLink href={route('addArticle')} >Добавить статью</NavLink>
+
+                                <NavLink href={route('myArticles')} >Список моих статей</NavLink>
+
+                                <NavLink href={route('searchArticles')}>Поиск статей</NavLink>
+
+                                <NavLink href={route('addFeedback')}>Заполнить форму обратной связи</NavLink>
+
                             </div>
                         </div>
 
@@ -55,9 +63,9 @@ export default function Authenticated({ user, header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                        <Dropdown.Link href={route('profile.edit')}>Профиль</Dropdown.Link>
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
-                                            Log Out
+                                            Выйти
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>

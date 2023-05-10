@@ -36,7 +36,7 @@ export default function FeedbackList({auth, feedback}) {
                                 return (
                                     <div>
                                         <div className="feedBlock">
-                                            <span className={"FeedbackName bg-blue-300"}>{feedback_.name}</span>
+                                            <a href={route('anotherProfile', feedback_.user_id)} className={"FeedbackName bg-blue-300"}>{feedback_.name}</a>
                                             <br/>
                                             <span className={"FeedbackMsg "}>{feedback_.message}</span>
 

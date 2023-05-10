@@ -39,11 +39,15 @@ export default function MyArticles({auth, articles}) {
                                 return (
                                     <div className={"acceptPanel bg-blue-300"}>
                                         <div className={"spanPanel"}>
-                                            <span className={"spanName"}>Title: {article.title}</span>
+                                            <h1>Название: {article.title}</h1>
                                             <br/>
-                                            <span className={"spanName"}>Indexability: {article.indexability}</span>
+                                            <p>УДК: {article.udc}</p>
                                             <br/>
-                                            <span className={"spanName"}>UDC: {article.udc}</span>
+                                            <p>Индексируемость: {article.indexability}</p>
+                                            <br/>
+                                            <p>Место публицации:{article.publication_place}</p>
+                                            <br/>
+                                            <p>Научный руководитель: {article.scientific_adviser}</p>
                                             <br/>
                                         </div>
 

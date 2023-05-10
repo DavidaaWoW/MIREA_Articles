@@ -56,11 +56,9 @@ export default function Search({auth, articles = [], info = ''}) {
                         <h1>{info}</h1>
                         {
                             articles.map((article) => {
-                                console.log(article)
                                 return (
-                                    <div>
-                                    <a href={route('singleArticle', article.id)}>{article.title} </a>
-                                    <br />
+                                    <div className="Form">
+                                        <a href={route('singleArticle', article.id)} style={{fontSize: "1.3em", textDecoration: "underline"}}>{article.title} </a>
                                     </div>
                                 );
                             })

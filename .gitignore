@@ -20,4 +20,4 @@ yarn-error.log
 
 /config/database.php
 package-lock.json
-
+composer.lock

@@ -55,42 +55,10 @@ export default function AddFeedback({ auth }) {
                             Если у вас есть какие-то вопросы или предложения по сотрудничеству -
                             заполните форму ниже
                         </p>
-                        <form action="#">
-                            <div className="input-box">
-                                <input type="text" placeholder="Ваше имя"/>
-                            </div>
-                            <div className="input-box">
-                                <input type="text" placeholder="Введите email"/>
-                            </div>
-                            <div className="input-box">
-                                <input type="text" placeholder="Введите телефон"/>
-                            </div>
-                            <div className="input-box message-box">
-                                <textarea placeholder="Сообщение"></textarea>
-                            </div>
-                            <div className="button">
-                                <input type="button" value="Отправить"/>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <script
-                src="https://kit.fontawesome.com/fce9a50d02.js"
-                crossOrigin="anonymous"
-            ></script>
-
-
-
-
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <form onSubmit={submit} encType="multipart/form-data">
                             <div>
                                 <InputLabel htmlFor="message" value="Сообщение" />
-                                <textarea id="message" name="message" onChange={(e) => setData('message', e.target.value)}></textarea>
+                                <textarea className="input-box message-box" id="message" name="message" onChange={(e) => setData('message', e.target.value)}></textarea>
 
                                 <InputError message={errors.message} className="mt-2" />
                             </div>
@@ -106,6 +74,10 @@ export default function AddFeedback({ auth }) {
                     </div>
                 </div>
             </div>
+            <script
+                src="https://kit.fontawesome.com/fce9a50d02.js"
+                crossOrigin="anonymous"
+            ></script>
         </AuthenticatedLayout>
     );
 }

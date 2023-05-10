@@ -44,10 +44,17 @@ export default function MyArticles({ auth, articles }) {
 
                                           <div className="card">
                                               <h1>Название: {article.title}</h1>
+                                              <br/>
                                               <p>УДК: {article.udc}</p>
+                                              <br/>
                                               <p>Индексируемость: {article.indexability}</p>
+                                              <br/>
                                               <p>Место публицации:{article.publication_place}</p>
-                                              <p>Статус верификации: {article.verification_status}</p>
+                                              <br/>
+                                              <p>Научный руководитель: {article.scientific_adviser}</p>
+                                              <br/>
+                                              <p>Статус верификации: {article.verification_status == 'on review' ? 'на проверке' : 'опубликовано'}</p>
+                                              <br/>
                                               <p>
                                                   <button><a href={route('download', article.id)}>Скачать файл</a></button>
                                               </p>
